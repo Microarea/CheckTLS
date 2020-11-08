@@ -14,4 +14,4 @@ Se questo primo tentativo non va a buon fine il tool prova un collegamento forza
 In alternativa si può configurare il sistema tramite il registry per forzare l'uso di tale protocollo, si vedano le apposite pagine dell'Help Center per dettagli.
 
 Se anche questo secondo tentativo fallisce, il sistema non è in grado di utilizzare il protocollo TLS 1.2.  
-Sarà necessario prima installare tutti gli aggiornamenti disponibili, o passare a duna versione di S.O. più moderna.
+Sarà necessario prima installare tutti gli aggiornamenti disponibili, o passare ad una versione di S.O. più moderna.
