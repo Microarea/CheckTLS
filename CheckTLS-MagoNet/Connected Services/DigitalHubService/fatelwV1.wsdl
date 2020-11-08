@@ -1,0 +1,2673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="urn:ws.fatelw.zucchetti.it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:ws.fatelw.zucchetti.it" targetNamespace="urn:ws.fatelw.zucchetti.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ws.fatelw.zucchetti.it">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="fatelwV1Return">
+        <xsd:sequence>
+          <xsd:element name="code" type="xsd:int" />
+          <xsd:element name="message" nillable="true" type="xsd:string" />
+          <xsd:element name="response" nillable="true" type="xsd:string" />
+          <xsd:element name="token" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fatelwV1Cedente">
+        <xsd:sequence>
+          <xsd:element name="attivo" nillable="true" type="xsd:string" />
+          <xsd:element name="cap" nillable="true" type="xsd:string" />
+          <xsd:element name="capitaleSociale" type="xsd:float" />
+          <xsd:element name="codiceFirma" type="xsd:int" />
+          <xsd:element name="codiceFiscale" nillable="true" type="xsd:string" />
+          <xsd:element name="cognome" nillable="true" type="xsd:string" />
+          <xsd:element name="comune" nillable="true" type="xsd:string" />
+          <xsd:element name="dataAttivazione" nillable="true" type="xsd:string" />
+          <xsd:element name="dataScadenza" nillable="true" type="xsd:string" />
+          <xsd:element name="denominazione" nillable="true" type="xsd:string" />
+          <xsd:element name="email" nillable="true" type="xsd:string" />
+          <xsd:element name="fatturazionePassiva" nillable="true" type="xsd:string" />
+          <xsd:element name="identificativoConservazione" nillable="true" type="xsd:string" />
+          <xsd:element name="indirizzo" nillable="true" type="xsd:string" />
+          <xsd:element name="localita" nillable="true" type="xsd:string" />
+          <xsd:element name="nazione" nillable="true" type="xsd:string" />
+          <xsd:element name="nome" nillable="true" type="xsd:string" />
+          <xsd:element name="numeroCivico" nillable="true" type="xsd:string" />
+          <xsd:element name="numeroRea" nillable="true" type="xsd:string" />
+          <xsd:element name="numeroTelefono1" nillable="true" type="xsd:string" />
+          <xsd:element name="numeroTelefono2" nillable="true" type="xsd:string" />
+          <xsd:element name="prefissoTelefono1" nillable="true" type="xsd:string" />
+          <xsd:element name="prefissoTelefono2" nillable="true" type="xsd:string" />
+          <xsd:element name="provincia" nillable="true" type="xsd:string" />
+          <xsd:element name="socioUnico" nillable="true" type="xsd:string" />
+          <xsd:element name="statoLiquidazione" nillable="true" type="xsd:string" />
+          <xsd:element name="tipoFirma" nillable="true" type="xsd:string" />
+          <xsd:element name="tipoTelefono1" nillable="true" type="xsd:string" />
+          <xsd:element name="tipoTelefono2" nillable="true" type="xsd:string" />
+          <xsd:element name="ufficioRea" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_xsd_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendDocumentDFResponse">
+    <wsdl:part name="sendDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="billing_flactivechange_masterResponse">
+    <wsdl:part name="billing_flactivechange_masterReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesPSNDResponse">
+    <wsdl:part name="getDocumentsFilesPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCedenteResponse">
+    <wsdl:part name="getCedenteReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachFPResponse">
+    <wsdl:part name="getDocumentFilesAttachFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="chkDocumentDFResponse">
+    <wsdl:part name="chkDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getAziMasterResponse">
+    <wsdl:part name="getAziMasterReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsDFResponse">
+    <wsdl:part name="sendDocumentsDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentPSNDResponse">
+    <wsdl:part name="valDocumentPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentServiceResponse">
+    <wsdl:part name="signDocumentServiceReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentDFResponse">
+    <wsdl:part name="signAndConfirmDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insCedenteResponse">
+    <wsdl:part name="insCedenteReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateFPResponse">
+    <wsdl:part name="getStateFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesNSOResponse">
+    <wsdl:part name="getDocumentsFilesNSOReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettiviFilesResponse">
+    <wsdl:part name="getCorrispettiviFilesReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListPRECResponse">
+    <wsdl:part name="getDocumentsListPRECReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileResponse">
+    <wsdl:part name="getNotificationFileReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileDFResponse">
+    <wsdl:part name="getDocumentFileDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettivoFileRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesOPCResponse">
+    <wsdl:part name="getDocumentFilesOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStatePSNDResponse">
+    <wsdl:part name="getStatePSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPCDResponse">
+    <wsdl:part name="getDocumentsListFPCDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getUtenteRequest">
+    <wsdl:part name="userName" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPHMSRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFromhms" type="xsd:string" />
+    <wsdl:part name="dateTohms" type="xsd:string" />
+    <wsdl:part name="idCessionario" type="xsd:string" />
+    <wsdl:part name="codiceDestinatario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoExportResponse">
+    <wsdl:part name="getEsitoExportReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsFPResponse">
+    <wsdl:part name="sendDocumentsFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentServiceRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStatePSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="disconnectResponse">
+    <wsdl:part name="disconnectReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="billing_pwdchangeResponse">
+    <wsdl:part name="billing_pwdchangeReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentResponse">
+    <wsdl:part name="delDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettiviFilesRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="billing_pwdchange_partnerRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="CodiceSige" type="xsd:string" />
+    <wsdl:part name="MailAddress" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getAziMasterRequest">
+    <wsdl:part name="token" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesFPResponse">
+    <wsdl:part name="getDocumentsFilesFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsDFResponse">
+    <wsdl:part name="getDocumentsDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileOPCResponse">
+    <wsdl:part name="getDocumentFileOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachOPCResponse">
+    <wsdl:part name="getDocumentFilesAttachOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendCorrispettivoResponse">
+    <wsdl:part name="sendCorrispettivoReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="updSubfornituraResponse">
+    <wsdl:part name="updSubfornituraReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentLIResponse">
+    <wsdl:part name="confDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="insFattureRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idAzienda" type="xsd:string" />
+    <wsdl:part name="quantita" type="xsd:int" />
+    <wsdl:part name="prodotto" type="xsd:string" />
+    <wsdl:part name="matricola" type="xsd:string" />
+    <wsdl:part name="cadi" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insReconsCODIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="nome" type="xsd:string" />
+    <wsdl:part name="cognome" type="xsd:string" />
+    <wsdl:part name="sesso" type="xsd:string" />
+    <wsdl:part name="borndate" type="xsd:string" />
+    <wsdl:part name="nation" type="xsd:string" />
+    <wsdl:part name="prov" type="xsd:string" />
+    <wsdl:part name="localita" type="xsd:string" />
+    <wsdl:part name="codfis" type="xsd:string" />
+    <wsdl:part name="mail" type="xsd:string" />
+    <wsdl:part name="ragsoc" type="xsd:string" />
+    <wsdl:part name="indirizzo" type="xsd:string" />
+    <wsdl:part name="number" type="xsd:string" />
+    <wsdl:part name="cap" type="xsd:string" />
+    <wsdl:part name="provazi" type="xsd:string" />
+    <wsdl:part name="locazi" type="xsd:string" />
+    <wsdl:part name="idNation" type="xsd:string" />
+    <wsdl:part name="piva" type="xsd:string" />
+    <wsdl:part name="codfiscazi" type="xsd:string" />
+    <wsdl:part name="mailazi" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListAGOResponse">
+    <wsdl:part name="getDocumentsListAGOReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateDFResponse">
+    <wsdl:part name="getCodiStateDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentLIResponse">
+    <wsdl:part name="valDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insConsumiResponse">
+    <wsdl:part name="insConsumiReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendCorrispettiviResponse">
+    <wsdl:part name="sendCorrispettiviReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileNSOResponse">
+    <wsdl:part name="getNotificationFileNSOReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="insSubfornituraResponse">
+    <wsdl:part name="insSubfornituraReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachResponse">
+    <wsdl:part name="getDocumentFilesAttachReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateResponse">
+    <wsdl:part name="getStateReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendCorrispettivoRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentPSNDResponse">
+    <wsdl:part name="sendDocumentPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="genNotifyFPResponse">
+    <wsdl:part name="genNotifyFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesResponse">
+    <wsdl:part name="getDocumentFilesReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="exportZipFAResponse">
+    <wsdl:part name="exportZipFAReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoImportRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentFPResponse">
+    <wsdl:part name="sendDocumentFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="chkDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettiviListRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFrom" type="xsd:string" />
+    <wsdl:part name="dateTo" type="xsd:string" />
+    <wsdl:part name="idEsercente" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFPResponse">
+    <wsdl:part name="getDocumentsFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentDFResponse">
+    <wsdl:part name="confDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateLIResponse">
+    <wsdl:part name="getStateLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileFPResponse">
+    <wsdl:part name="getNotificationFileFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileNSORequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateFPResponse">
+    <wsdl:part name="getCodiStateFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="exportZipFARequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentDFResponse">
+    <wsdl:part name="signDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="coordinator_subfornituraRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idMaster" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+    <wsdl:part name="invioCredenziali" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListNSORequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFromhms" type="xsd:string" />
+    <wsdl:part name="dateTohms" type="xsd:string" />
+    <wsdl:part name="idCessionario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="disconnectRequest">
+    <wsdl:part name="token" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListResponse">
+    <wsdl:part name="getDocumentsListReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getCedenteRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="billing_getfilesRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="servizio" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileLIResponse">
+    <wsdl:part name="getNotificationFileLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="insFattureResponse">
+    <wsdl:part name="insFattureReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateDFResponse">
+    <wsdl:part name="getStateDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentOPCResponse">
+    <wsdl:part name="sendDocumentOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="connectResponse">
+    <wsdl:part name="connectReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesNSORequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="connectRequest">
+    <wsdl:part name="userName" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="company" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="billing_pwdchangeRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="amCodice" type="xsd:string" />
+    <wsdl:part name="MailAddress" type="xsd:string" />
+    <wsdl:part name="target" type="xsd:string" />
+    <wsdl:part name="user" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileResponse">
+    <wsdl:part name="getDocumentFileReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getResponsabileConservazioneResponse">
+    <wsdl:part name="getResponsabileConservazioneReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+    <wsdl:part name="stato" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileNSORequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentLIResponse">
+    <wsdl:part name="delDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="genNotifyFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="tipoNotifica" type="xsd:string" />
+    <wsdl:part name="motivo" type="xsd:string" />
+    <wsdl:part name="idCessionario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getHubRequest">
+    <wsdl:part name="userName" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPCDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFrom" type="xsd:string" />
+    <wsdl:part name="dateTo" type="xsd:string" />
+    <wsdl:part name="idCessionario" type="xsd:string" />
+    <wsdl:part name="codiceDestinatario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileLIResponse">
+    <wsdl:part name="getDocumentFileLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="exportZipFPResponse">
+    <wsdl:part name="exportZipFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentLIResponse">
+    <wsdl:part name="signDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="year" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setCompletedResponse">
+    <wsdl:part name="setCompletedReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileNSOResponse">
+    <wsdl:part name="getDocumentFileNSOReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="insCedenteRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentResponse">
+    <wsdl:part name="valDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsResponse">
+    <wsdl:part name="getDocumentsReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updCedenteResponse">
+    <wsdl:part name="updCedenteReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="updCedenteProgInvioResponse">
+    <wsdl:part name="updCedenteProgInvioReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsResponse">
+    <wsdl:part name="sendDocumentsReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getUtenteResponse">
+    <wsdl:part name="getUtenteReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileOPCResponse">
+    <wsdl:part name="getNotificationFileOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileFPResponse">
+    <wsdl:part name="getDocumentFileFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="billing_getfilesResponse">
+    <wsdl:part name="billing_getfilesReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesPRECRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListNSOResponse">
+    <wsdl:part name="getDocumentsListNSOReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateLIResponse">
+    <wsdl:part name="getCodiStateLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiCountRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="anno" type="xsd:string" />
+    <wsdl:part name="mese" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="servizio" type="xsd:string" />
+    <wsdl:part name="statoFa" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getResponsabileConservazioneRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoExportRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesFPResponse">
+    <wsdl:part name="getDocumentFilesFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesResponse">
+    <wsdl:part name="getDocumentsFilesReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendCorrispettiviRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettiviListResponse">
+    <wsdl:part name="getCorrispettiviListReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentLIResponse">
+    <wsdl:part name="signAndConfirmDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="billing_flactivechange_masterRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="master" type="xsd:string" />
+    <wsdl:part name="attivo" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsPSNDResponse">
+    <wsdl:part name="sendDocumentsPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiCountResponse">
+    <wsdl:part name="getConsumiCountReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="insSubfornituraRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+    <wsdl:part name="invioCredenziali" type="xsd:string" />
+    <wsdl:part name="idSige" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="chkDocumentLIResponse">
+    <wsdl:part name="chkDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsAsyncResponse">
+    <wsdl:part name="sendDocumentsAsyncReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentPSNDResponse">
+    <wsdl:part name="delDocumentPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFileRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="billing_pwdchange_partnerResponse">
+    <wsdl:part name="billing_pwdchange_partnerReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getFatturaFileResponse">
+    <wsdl:part name="getFatturaFileReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentServiceRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="signService" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStateDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="dateFrom" type="xsd:string" />
+    <wsdl:part name="dateTo" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="codiceFiscale" type="xsd:string" />
+    <wsdl:part name="stato" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesLIResponse">
+    <wsdl:part name="getDocumentFilesLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="updCedenteRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentPSNDResponse">
+    <wsdl:part name="confDocumentPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiResponse">
+    <wsdl:part name="getConsumiReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getCorrispettivoFileResponse">
+    <wsdl:part name="getCorrispettivoFileReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentServiceResponse">
+    <wsdl:part name="signAndConfirmDocumentServiceReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFrom" type="xsd:string" />
+    <wsdl:part name="dateTo" type="xsd:string" />
+    <wsdl:part name="idCessionario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentResponse">
+    <wsdl:part name="signAndConfirmDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesAttachOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesDFResponse">
+    <wsdl:part name="getDocumentFilesDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentResponse">
+    <wsdl:part name="sendDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="insConsumiRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="anno" type="xsd:int" />
+    <wsdl:part name="qta" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentLIResponse">
+    <wsdl:part name="sendDocumentLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentOPCResponse">
+    <wsdl:part name="delDocumentOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsPSNDResponse">
+    <wsdl:part name="getDocumentsPSNDReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiByMonthResponse">
+    <wsdl:part name="getConsumiByMonthReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesPRECResponse">
+    <wsdl:part name="getDocumentsFilesPRECReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsLIResponse">
+    <wsdl:part name="sendDocumentsLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsOPCResponse">
+    <wsdl:part name="getDocumentsOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileDFResponse">
+    <wsdl:part name="getNotificationFileDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListPRECRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="allDocuments" type="xsd:boolean" />
+    <wsdl:part name="dateFromhms" type="xsd:string" />
+    <wsdl:part name="dateTohms" type="xsd:string" />
+    <wsdl:part name="idCedente" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStateOPCResponse">
+    <wsdl:part name="getStateOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="delDocumentDFResponse">
+    <wsdl:part name="delDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+    <wsdl:part name="unsignP7M" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getStateLIRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getConsumiByMonthRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="year" type="xsd:string" />
+    <wsdl:part name="month" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentDFResponse">
+    <wsdl:part name="valDocumentDFReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="valDocumentPSNDRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="insReconsCODIResponse">
+    <wsdl:part name="insReconsCODIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="updCedenteProgInvioRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+    <wsdl:part name="progressivoInvio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getFatturaFileRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="position" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateResponse">
+    <wsdl:part name="getCodiStateReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPHMSResponse">
+    <wsdl:part name="getDocumentsListFPHMSReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="setCompletedRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListAGORequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="date" type="xsd:string" />
+    <wsdl:part name="user" type="xsd:boolean" />
+    <wsdl:part name="stato" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentResponse">
+    <wsdl:part name="confDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsOPCResponse">
+    <wsdl:part name="sendDocumentsOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="ids" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+    <wsdl:part name="stato" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="signAndConfirmDocumentRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="getCodiStateRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="exportZipFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="chkDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="coordinator_subfornituraResponse">
+    <wsdl:part name="coordinator_subfornituraReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsListFPResponse">
+    <wsdl:part name="getDocumentsListFPReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getHubResponse">
+    <wsdl:part name="getHubReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsLIResponse">
+    <wsdl:part name="getDocumentsLIReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="getStateOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updSubfornituraRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="idPaese" type="xsd:string" />
+    <wsdl:part name="idCodice" type="xsd:string" />
+    <wsdl:part name="cedente" type="impl:fatelwV1Cedente" />
+    <wsdl:part name="invioCredenziali" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentsFilesOPCResponse">
+    <wsdl:part name="getDocumentsFilesOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsAsyncRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentOPCRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="descriptor" type="xsd:base64Binary" />
+    <wsdl:part name="hashDescriptor" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentFilesDFRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getNotificationFileFPRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:string" />
+    <wsdl:part name="idUserExt" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoImportResponse">
+    <wsdl:part name="getEsitoImportReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="confDocumentOPCResponse">
+    <wsdl:part name="confDocumentOPCReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:message name="sendDocumentsRequest">
+    <wsdl:part name="token" type="xsd:string" />
+    <wsdl:part name="fileName" type="xsd:string" />
+    <wsdl:part name="file" type="xsd:base64Binary" />
+    <wsdl:part name="hashFile" type="xsd:base64Binary" />
+    <wsdl:part name="isLast" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="signDocumentResponse">
+    <wsdl:part name="signDocumentReturn" type="impl:fatelwV1Return" />
+  </wsdl:message>
+  <wsdl:portType name="fatelwV1">
+    <wsdl:operation name="connect" parameterOrder="userName password company">
+      <wsdl:input name="connectRequest" message="impl:connectRequest" />
+      <wsdl:output name="connectResponse" message="impl:connectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="disconnect" parameterOrder="token">
+      <wsdl:input name="disconnectRequest" message="impl:disconnectRequest" />
+      <wsdl:output name="disconnectResponse" message="impl:disconnectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCedente" parameterOrder="token idPaese idCodice">
+      <wsdl:input name="getCedenteRequest" message="impl:getCedenteRequest" />
+      <wsdl:output name="getCedenteResponse" message="impl:getCedenteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insCedente" parameterOrder="token idPaese idCodice cedente">
+      <wsdl:input name="insCedenteRequest" message="impl:insCedenteRequest" />
+      <wsdl:output name="insCedenteResponse" message="impl:insCedenteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updCedente" parameterOrder="token idPaese idCodice cedente">
+      <wsdl:input name="updCedenteRequest" message="impl:updCedenteRequest" />
+      <wsdl:output name="updCedenteResponse" message="impl:updCedenteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updCedenteProgInvio" parameterOrder="token idPaese idCodice cedente progressivoInvio">
+      <wsdl:input name="updCedenteProgInvioRequest" message="impl:updCedenteProgInvioRequest" />
+      <wsdl:output name="updCedenteProgInvioResponse" message="impl:updCedenteProgInvioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insConsumi" parameterOrder="token idPaese idCodice anno qta">
+      <wsdl:input name="insConsumiRequest" message="impl:insConsumiRequest" />
+      <wsdl:output name="insConsumiResponse" message="impl:insConsumiResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAziMaster" parameterOrder="token">
+      <wsdl:input name="getAziMasterRequest" message="impl:getAziMasterRequest" />
+      <wsdl:output name="getAziMasterResponse" message="impl:getAziMasterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getConsumi" parameterOrder="token year idPaese idCodice">
+      <wsdl:input name="getConsumiRequest" message="impl:getConsumiRequest" />
+      <wsdl:output name="getConsumiResponse" message="impl:getConsumiResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getConsumiCount" parameterOrder="token anno mese idPaese idCodice servizio statoFa">
+      <wsdl:input name="getConsumiCountRequest" message="impl:getConsumiCountRequest" />
+      <wsdl:output name="getConsumiCountResponse" message="impl:getConsumiCountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getConsumiByMonth" parameterOrder="token year month idPaese idCodice">
+      <wsdl:input name="getConsumiByMonthRequest" message="impl:getConsumiByMonthRequest" />
+      <wsdl:output name="getConsumiByMonthResponse" message="impl:getConsumiByMonthResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insFatture" parameterOrder="token idAzienda quantita prodotto matricola cadi">
+      <wsdl:input name="insFattureRequest" message="impl:insFattureRequest" />
+      <wsdl:output name="insFattureResponse" message="impl:insFattureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insSubfornitura" parameterOrder="token idPaese idCodice cedente invioCredenziali idSige">
+      <wsdl:input name="insSubfornituraRequest" message="impl:insSubfornituraRequest" />
+      <wsdl:output name="insSubfornituraResponse" message="impl:insSubfornituraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updSubfornitura" parameterOrder="token idPaese idCodice cedente invioCredenziali">
+      <wsdl:input name="updSubfornituraRequest" message="impl:updSubfornituraRequest" />
+      <wsdl:output name="updSubfornituraResponse" message="impl:updSubfornituraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoExport" parameterOrder="token id">
+      <wsdl:input name="getEsitoExportRequest" message="impl:getEsitoExportRequest" />
+      <wsdl:output name="getEsitoExportResponse" message="impl:getEsitoExportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insReconsCODI" parameterOrder="token nome cognome sesso borndate nation prov localita codfis mail ragsoc indirizzo number cap provazi locazi idNation piva codfiscazi mailazi">
+      <wsdl:input name="insReconsCODIRequest" message="impl:insReconsCODIRequest" />
+      <wsdl:output name="insReconsCODIResponse" message="impl:insReconsCODIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getResponsabileConservazione" parameterOrder="token idPaese idCodice">
+      <wsdl:input name="getResponsabileConservazioneRequest" message="impl:getResponsabileConservazioneRequest" />
+      <wsdl:output name="getResponsabileConservazioneResponse" message="impl:getResponsabileConservazioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="billing_flactivechange_master" parameterOrder="token master attivo password">
+      <wsdl:input name="billing_flactivechange_masterRequest" message="impl:billing_flactivechange_masterRequest" />
+      <wsdl:output name="billing_flactivechange_masterResponse" message="impl:billing_flactivechange_masterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="billing_pwdchange" parameterOrder="token amCodice MailAddress target user password">
+      <wsdl:input name="billing_pwdchangeRequest" message="impl:billing_pwdchangeRequest" />
+      <wsdl:output name="billing_pwdchangeResponse" message="impl:billing_pwdchangeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="billing_pwdchange_partner" parameterOrder="token CodiceSige MailAddress password">
+      <wsdl:input name="billing_pwdchange_partnerRequest" message="impl:billing_pwdchange_partnerRequest" />
+      <wsdl:output name="billing_pwdchange_partnerResponse" message="impl:billing_pwdchange_partnerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="billing_getfiles" parameterOrder="token ids servizio password">
+      <wsdl:input name="billing_getfilesRequest" message="impl:billing_getfilesRequest" />
+      <wsdl:output name="billing_getfilesResponse" message="impl:billing_getfilesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="coordinator_subfornitura" parameterOrder="token idMaster idPaese idCodice cedente invioCredenziali">
+      <wsdl:input name="coordinator_subfornituraRequest" message="impl:coordinator_subfornituraRequest" />
+      <wsdl:output name="coordinator_subfornituraResponse" message="impl:coordinator_subfornituraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getUtente" parameterOrder="userName password">
+      <wsdl:input name="getUtenteRequest" message="impl:getUtenteRequest" />
+      <wsdl:output name="getUtenteResponse" message="impl:getUtenteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHub" parameterOrder="userName password">
+      <wsdl:input name="getHubRequest" message="impl:getHubRequest" />
+      <wsdl:output name="getHubResponse" message="impl:getHubResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getState" parameterOrder="token id">
+      <wsdl:input name="getStateRequest" message="impl:getStateRequest" />
+      <wsdl:output name="getStateResponse" message="impl:getStateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delDocument" parameterOrder="token id">
+      <wsdl:input name="delDocumentRequest" message="impl:delDocumentRequest" />
+      <wsdl:output name="delDocumentResponse" message="impl:delDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocuments" parameterOrder="token id">
+      <wsdl:input name="getDocumentsRequest" message="impl:getDocumentsRequest" />
+      <wsdl:output name="getDocumentsResponse" message="impl:getDocumentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFile" parameterOrder="token id">
+      <wsdl:input name="getDocumentFileRequest" message="impl:getDocumentFileRequest" />
+      <wsdl:output name="getDocumentFileResponse" message="impl:getDocumentFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFile" parameterOrder="token id file">
+      <wsdl:input name="getNotificationFileRequest" message="impl:getNotificationFileRequest" />
+      <wsdl:output name="getNotificationFileResponse" message="impl:getNotificationFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFiles" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesRequest" message="impl:getDocumentFilesRequest" />
+      <wsdl:output name="getDocumentFilesResponse" message="impl:getDocumentFilesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttach" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesAttachRequest" message="impl:getDocumentFilesAttachRequest" />
+      <wsdl:output name="getDocumentFilesAttachResponse" message="impl:getDocumentFilesAttachResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFiles" parameterOrder="token ids unsignP7M">
+      <wsdl:input name="getDocumentsFilesRequest" message="impl:getDocumentsFilesRequest" />
+      <wsdl:output name="getDocumentsFilesResponse" message="impl:getDocumentsFilesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesFP" parameterOrder="token ids unsignP7M">
+      <wsdl:input name="getDocumentsFilesFPRequest" message="impl:getDocumentsFilesFPRequest" />
+      <wsdl:output name="getDocumentsFilesFPResponse" message="impl:getDocumentsFilesFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsList" parameterOrder="token dateFrom dateTo idPaese idCodice codiceFiscale stato">
+      <wsdl:input name="getDocumentsListRequest" message="impl:getDocumentsListRequest" />
+      <wsdl:output name="getDocumentsListResponse" message="impl:getDocumentsListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListAGO" parameterOrder="token date user stato">
+      <wsdl:input name="getDocumentsListAGORequest" message="impl:getDocumentsListAGORequest" />
+      <wsdl:output name="getDocumentsListAGOResponse" message="impl:getDocumentsListAGOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="valDocument" parameterOrder="token id">
+      <wsdl:input name="valDocumentRequest" message="impl:valDocumentRequest" />
+      <wsdl:output name="valDocumentResponse" message="impl:valDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signDocument" parameterOrder="token id">
+      <wsdl:input name="signDocumentRequest" message="impl:signDocumentRequest" />
+      <wsdl:output name="signDocumentResponse" message="impl:signDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentService" parameterOrder="token id signService">
+      <wsdl:input name="signDocumentServiceRequest" message="impl:signDocumentServiceRequest" />
+      <wsdl:output name="signDocumentServiceResponse" message="impl:signDocumentServiceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocument" parameterOrder="token id">
+      <wsdl:input name="signAndConfirmDocumentRequest" message="impl:signAndConfirmDocumentRequest" />
+      <wsdl:output name="signAndConfirmDocumentResponse" message="impl:signAndConfirmDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentService" parameterOrder="token id signService">
+      <wsdl:input name="signAndConfirmDocumentServiceRequest" message="impl:signAndConfirmDocumentServiceRequest" />
+      <wsdl:output name="signAndConfirmDocumentServiceResponse" message="impl:signAndConfirmDocumentServiceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confDocument" parameterOrder="token id">
+      <wsdl:input name="confDocumentRequest" message="impl:confDocumentRequest" />
+      <wsdl:output name="confDocumentResponse" message="impl:confDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setCompleted" parameterOrder="token id">
+      <wsdl:input name="setCompletedRequest" message="impl:setCompletedRequest" />
+      <wsdl:output name="setCompletedResponse" message="impl:setCompletedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocument" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendDocumentRequest" message="impl:sendDocumentRequest" />
+      <wsdl:output name="sendDocumentResponse" message="impl:sendDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsAsync" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsAsyncRequest" message="impl:sendDocumentsAsyncRequest" />
+      <wsdl:output name="sendDocumentsAsyncResponse" message="impl:sendDocumentsAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocuments" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsRequest" message="impl:sendDocumentsRequest" />
+      <wsdl:output name="sendDocumentsResponse" message="impl:sendDocumentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoImport" parameterOrder="token fileName">
+      <wsdl:input name="getEsitoImportRequest" message="impl:getEsitoImportRequest" />
+      <wsdl:output name="getEsitoImportResponse" message="impl:getEsitoImportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="exportZipFA" parameterOrder="token id">
+      <wsdl:input name="exportZipFARequest" message="impl:exportZipFARequest" />
+      <wsdl:output name="exportZipFAResponse" message="impl:exportZipFAResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCodiState" parameterOrder="token id">
+      <wsdl:input name="getCodiStateRequest" message="impl:getCodiStateRequest" />
+      <wsdl:output name="getCodiStateResponse" message="impl:getCodiStateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStateFP" parameterOrder="token id">
+      <wsdl:input name="getStateFPRequest" message="impl:getStateFPRequest" />
+      <wsdl:output name="getStateFPResponse" message="impl:getStateFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFP" parameterOrder="token id">
+      <wsdl:input name="getDocumentsFPRequest" message="impl:getDocumentsFPRequest" />
+      <wsdl:output name="getDocumentsFPResponse" message="impl:getDocumentsFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileFP" parameterOrder="token id idUserExt unsignP7M">
+      <wsdl:input name="getDocumentFileFPRequest" message="impl:getDocumentFileFPRequest" />
+      <wsdl:output name="getDocumentFileFPResponse" message="impl:getDocumentFileFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesFP" parameterOrder="token id idUserExt unsignP7M">
+      <wsdl:input name="getDocumentFilesFPRequest" message="impl:getDocumentFilesFPRequest" />
+      <wsdl:output name="getDocumentFilesFPResponse" message="impl:getDocumentFilesFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttachFP" parameterOrder="token id idUserExt unsignP7M">
+      <wsdl:input name="getDocumentFilesAttachFPRequest" message="impl:getDocumentFilesAttachFPRequest" />
+      <wsdl:output name="getDocumentFilesAttachFPResponse" message="impl:getDocumentFilesAttachFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFP" parameterOrder="token allDocuments dateFrom dateTo idCessionario">
+      <wsdl:input name="getDocumentsListFPRequest" message="impl:getDocumentsListFPRequest" />
+      <wsdl:output name="getDocumentsListFPResponse" message="impl:getDocumentsListFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFPCD" parameterOrder="token allDocuments dateFrom dateTo idCessionario codiceDestinatario">
+      <wsdl:input name="getDocumentsListFPCDRequest" message="impl:getDocumentsListFPCDRequest" />
+      <wsdl:output name="getDocumentsListFPCDResponse" message="impl:getDocumentsListFPCDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFPHMS" parameterOrder="token allDocuments dateFromhms dateTohms idCessionario codiceDestinatario">
+      <wsdl:input name="getDocumentsListFPHMSRequest" message="impl:getDocumentsListFPHMSRequest" />
+      <wsdl:output name="getDocumentsListFPHMSResponse" message="impl:getDocumentsListFPHMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileFP" parameterOrder="token id file idUserExt">
+      <wsdl:input name="getNotificationFileFPRequest" message="impl:getNotificationFileFPRequest" />
+      <wsdl:output name="getNotificationFileFPResponse" message="impl:getNotificationFileFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="genNotifyFP" parameterOrder="token id tipoNotifica motivo idCessionario">
+      <wsdl:input name="genNotifyFPRequest" message="impl:genNotifyFPRequest" />
+      <wsdl:output name="genNotifyFPResponse" message="impl:genNotifyFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFatturaFile" parameterOrder="token id position">
+      <wsdl:input name="getFatturaFileRequest" message="impl:getFatturaFileRequest" />
+      <wsdl:output name="getFatturaFileResponse" message="impl:getFatturaFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentFP" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast stato">
+      <wsdl:input name="sendDocumentFPRequest" message="impl:sendDocumentFPRequest" />
+      <wsdl:output name="sendDocumentFPResponse" message="impl:sendDocumentFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsFP" parameterOrder="token fileName file hashFile isLast stato">
+      <wsdl:input name="sendDocumentsFPRequest" message="impl:sendDocumentsFPRequest" />
+      <wsdl:output name="sendDocumentsFPResponse" message="impl:sendDocumentsFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="exportZipFP" parameterOrder="token id">
+      <wsdl:input name="exportZipFPRequest" message="impl:exportZipFPRequest" />
+      <wsdl:output name="exportZipFPResponse" message="impl:exportZipFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateFP" parameterOrder="token id">
+      <wsdl:input name="getCodiStateFPRequest" message="impl:getCodiStateFPRequest" />
+      <wsdl:output name="getCodiStateFPResponse" message="impl:getCodiStateFPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileNSO" parameterOrder="token id idUserExt">
+      <wsdl:input name="getDocumentFileNSORequest" message="impl:getDocumentFileNSORequest" />
+      <wsdl:output name="getDocumentFileNSOResponse" message="impl:getDocumentFileNSOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesNSO" parameterOrder="token ids unsignP7M">
+      <wsdl:input name="getDocumentsFilesNSORequest" message="impl:getDocumentsFilesNSORequest" />
+      <wsdl:output name="getDocumentsFilesNSOResponse" message="impl:getDocumentsFilesNSOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListNSO" parameterOrder="token allDocuments dateFromhms dateTohms idCessionario">
+      <wsdl:input name="getDocumentsListNSORequest" message="impl:getDocumentsListNSORequest" />
+      <wsdl:output name="getDocumentsListNSOResponse" message="impl:getDocumentsListNSOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileNSO" parameterOrder="token id file">
+      <wsdl:input name="getNotificationFileNSORequest" message="impl:getNotificationFileNSORequest" />
+      <wsdl:output name="getNotificationFileNSOResponse" message="impl:getNotificationFileNSOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStateDF" parameterOrder="token id">
+      <wsdl:input name="getStateDFRequest" message="impl:getStateDFRequest" />
+      <wsdl:output name="getStateDFResponse" message="impl:getStateDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentDF" parameterOrder="token id">
+      <wsdl:input name="delDocumentDFRequest" message="impl:delDocumentDFRequest" />
+      <wsdl:output name="delDocumentDFResponse" message="impl:delDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsDF" parameterOrder="token id">
+      <wsdl:input name="getDocumentsDFRequest" message="impl:getDocumentsDFRequest" />
+      <wsdl:output name="getDocumentsDFResponse" message="impl:getDocumentsDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileDF" parameterOrder="token id">
+      <wsdl:input name="getDocumentFileDFRequest" message="impl:getDocumentFileDFRequest" />
+      <wsdl:output name="getDocumentFileDFResponse" message="impl:getDocumentFileDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileDF" parameterOrder="token id file">
+      <wsdl:input name="getNotificationFileDFRequest" message="impl:getNotificationFileDFRequest" />
+      <wsdl:output name="getNotificationFileDFResponse" message="impl:getNotificationFileDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesDF" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesDFRequest" message="impl:getDocumentFilesDFRequest" />
+      <wsdl:output name="getDocumentFilesDFResponse" message="impl:getDocumentFilesDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentDF" parameterOrder="token id">
+      <wsdl:input name="valDocumentDFRequest" message="impl:valDocumentDFRequest" />
+      <wsdl:output name="valDocumentDFResponse" message="impl:valDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="chkDocumentDF" parameterOrder="token fileName file hashFile">
+      <wsdl:input name="chkDocumentDFRequest" message="impl:chkDocumentDFRequest" />
+      <wsdl:output name="chkDocumentDFResponse" message="impl:chkDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentDF" parameterOrder="token id signService">
+      <wsdl:input name="signDocumentDFRequest" message="impl:signDocumentDFRequest" />
+      <wsdl:output name="signDocumentDFResponse" message="impl:signDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentDF" parameterOrder="token id signService">
+      <wsdl:input name="signAndConfirmDocumentDFRequest" message="impl:signAndConfirmDocumentDFRequest" />
+      <wsdl:output name="signAndConfirmDocumentDFResponse" message="impl:signAndConfirmDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentDF" parameterOrder="token id">
+      <wsdl:input name="confDocumentDFRequest" message="impl:confDocumentDFRequest" />
+      <wsdl:output name="confDocumentDFResponse" message="impl:confDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentDF" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendDocumentDFRequest" message="impl:sendDocumentDFRequest" />
+      <wsdl:output name="sendDocumentDFResponse" message="impl:sendDocumentDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsDF" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsDFRequest" message="impl:sendDocumentsDFRequest" />
+      <wsdl:output name="sendDocumentsDFResponse" message="impl:sendDocumentsDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateDF" parameterOrder="token id">
+      <wsdl:input name="getCodiStateDFRequest" message="impl:getCodiStateDFRequest" />
+      <wsdl:output name="getCodiStateDFResponse" message="impl:getCodiStateDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStateLI" parameterOrder="token id">
+      <wsdl:input name="getStateLIRequest" message="impl:getStateLIRequest" />
+      <wsdl:output name="getStateLIResponse" message="impl:getStateLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentLI" parameterOrder="token id">
+      <wsdl:input name="delDocumentLIRequest" message="impl:delDocumentLIRequest" />
+      <wsdl:output name="delDocumentLIResponse" message="impl:delDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsLI" parameterOrder="token id">
+      <wsdl:input name="getDocumentsLIRequest" message="impl:getDocumentsLIRequest" />
+      <wsdl:output name="getDocumentsLIResponse" message="impl:getDocumentsLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileLI" parameterOrder="token id">
+      <wsdl:input name="getDocumentFileLIRequest" message="impl:getDocumentFileLIRequest" />
+      <wsdl:output name="getDocumentFileLIResponse" message="impl:getDocumentFileLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileLI" parameterOrder="token id file">
+      <wsdl:input name="getNotificationFileLIRequest" message="impl:getNotificationFileLIRequest" />
+      <wsdl:output name="getNotificationFileLIResponse" message="impl:getNotificationFileLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesLI" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesLIRequest" message="impl:getDocumentFilesLIRequest" />
+      <wsdl:output name="getDocumentFilesLIResponse" message="impl:getDocumentFilesLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentLI" parameterOrder="token id">
+      <wsdl:input name="valDocumentLIRequest" message="impl:valDocumentLIRequest" />
+      <wsdl:output name="valDocumentLIResponse" message="impl:valDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="chkDocumentLI" parameterOrder="token fileName file hashFile">
+      <wsdl:input name="chkDocumentLIRequest" message="impl:chkDocumentLIRequest" />
+      <wsdl:output name="chkDocumentLIResponse" message="impl:chkDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentLI" parameterOrder="token id signService">
+      <wsdl:input name="signDocumentLIRequest" message="impl:signDocumentLIRequest" />
+      <wsdl:output name="signDocumentLIResponse" message="impl:signDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentLI" parameterOrder="token id signService">
+      <wsdl:input name="signAndConfirmDocumentLIRequest" message="impl:signAndConfirmDocumentLIRequest" />
+      <wsdl:output name="signAndConfirmDocumentLIResponse" message="impl:signAndConfirmDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentLI" parameterOrder="token id">
+      <wsdl:input name="confDocumentLIRequest" message="impl:confDocumentLIRequest" />
+      <wsdl:output name="confDocumentLIResponse" message="impl:confDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentLI" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendDocumentLIRequest" message="impl:sendDocumentLIRequest" />
+      <wsdl:output name="sendDocumentLIResponse" message="impl:sendDocumentLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsLI" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsLIRequest" message="impl:sendDocumentsLIRequest" />
+      <wsdl:output name="sendDocumentsLIResponse" message="impl:sendDocumentsLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateLI" parameterOrder="token id">
+      <wsdl:input name="getCodiStateLIRequest" message="impl:getCodiStateLIRequest" />
+      <wsdl:output name="getCodiStateLIResponse" message="impl:getCodiStateLIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendCorrispettivi" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendCorrispettiviRequest" message="impl:sendCorrispettiviRequest" />
+      <wsdl:output name="sendCorrispettiviResponse" message="impl:sendCorrispettiviResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendCorrispettivo" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendCorrispettivoRequest" message="impl:sendCorrispettivoRequest" />
+      <wsdl:output name="sendCorrispettivoResponse" message="impl:sendCorrispettivoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettiviList" parameterOrder="token allDocuments dateFrom dateTo idEsercente">
+      <wsdl:input name="getCorrispettiviListRequest" message="impl:getCorrispettiviListRequest" />
+      <wsdl:output name="getCorrispettiviListResponse" message="impl:getCorrispettiviListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettivoFile" parameterOrder="token id idUserExt">
+      <wsdl:input name="getCorrispettivoFileRequest" message="impl:getCorrispettivoFileRequest" />
+      <wsdl:output name="getCorrispettivoFileResponse" message="impl:getCorrispettivoFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettiviFiles" parameterOrder="token ids idUserExt">
+      <wsdl:input name="getCorrispettiviFilesRequest" message="impl:getCorrispettiviFilesRequest" />
+      <wsdl:output name="getCorrispettiviFilesResponse" message="impl:getCorrispettiviFilesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentOPC" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendDocumentOPCRequest" message="impl:sendDocumentOPCRequest" />
+      <wsdl:output name="sendDocumentOPCResponse" message="impl:sendDocumentOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsOPC" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsOPCRequest" message="impl:sendDocumentsOPCRequest" />
+      <wsdl:output name="sendDocumentsOPCResponse" message="impl:sendDocumentsOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStateOPC" parameterOrder="token id">
+      <wsdl:input name="getStateOPCRequest" message="impl:getStateOPCRequest" />
+      <wsdl:output name="getStateOPCResponse" message="impl:getStateOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentOPC" parameterOrder="token id">
+      <wsdl:input name="confDocumentOPCRequest" message="impl:confDocumentOPCRequest" />
+      <wsdl:output name="confDocumentOPCResponse" message="impl:confDocumentOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentOPC" parameterOrder="token id">
+      <wsdl:input name="delDocumentOPCRequest" message="impl:delDocumentOPCRequest" />
+      <wsdl:output name="delDocumentOPCResponse" message="impl:delDocumentOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsOPC" parameterOrder="token id">
+      <wsdl:input name="getDocumentsOPCRequest" message="impl:getDocumentsOPCRequest" />
+      <wsdl:output name="getDocumentsOPCResponse" message="impl:getDocumentsOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileOPC" parameterOrder="token id">
+      <wsdl:input name="getDocumentFileOPCRequest" message="impl:getDocumentFileOPCRequest" />
+      <wsdl:output name="getDocumentFileOPCResponse" message="impl:getDocumentFileOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileOPC" parameterOrder="token id file">
+      <wsdl:input name="getNotificationFileOPCRequest" message="impl:getNotificationFileOPCRequest" />
+      <wsdl:output name="getNotificationFileOPCResponse" message="impl:getNotificationFileOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesOPC" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesOPCRequest" message="impl:getDocumentFilesOPCRequest" />
+      <wsdl:output name="getDocumentFilesOPCResponse" message="impl:getDocumentFilesOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttachOPC" parameterOrder="token id">
+      <wsdl:input name="getDocumentFilesAttachOPCRequest" message="impl:getDocumentFilesAttachOPCRequest" />
+      <wsdl:output name="getDocumentFilesAttachOPCResponse" message="impl:getDocumentFilesAttachOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesOPC" parameterOrder="token ids">
+      <wsdl:input name="getDocumentsFilesOPCRequest" message="impl:getDocumentsFilesOPCRequest" />
+      <wsdl:output name="getDocumentsFilesOPCResponse" message="impl:getDocumentsFilesOPCResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentPSND" parameterOrder="token id">
+      <wsdl:input name="delDocumentPSNDRequest" message="impl:delDocumentPSNDRequest" />
+      <wsdl:output name="delDocumentPSNDResponse" message="impl:delDocumentPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentPSND" parameterOrder="token id">
+      <wsdl:input name="valDocumentPSNDRequest" message="impl:valDocumentPSNDRequest" />
+      <wsdl:output name="valDocumentPSNDResponse" message="impl:valDocumentPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentPSND" parameterOrder="token id">
+      <wsdl:input name="confDocumentPSNDRequest" message="impl:confDocumentPSNDRequest" />
+      <wsdl:output name="confDocumentPSNDResponse" message="impl:confDocumentPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStatePSND" parameterOrder="token id">
+      <wsdl:input name="getStatePSNDRequest" message="impl:getStatePSNDRequest" />
+      <wsdl:output name="getStatePSNDResponse" message="impl:getStatePSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesPSND" parameterOrder="token ids">
+      <wsdl:input name="getDocumentsFilesPSNDRequest" message="impl:getDocumentsFilesPSNDRequest" />
+      <wsdl:output name="getDocumentsFilesPSNDResponse" message="impl:getDocumentsFilesPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsPSND" parameterOrder="token id">
+      <wsdl:input name="getDocumentsPSNDRequest" message="impl:getDocumentsPSNDRequest" />
+      <wsdl:output name="getDocumentsPSNDResponse" message="impl:getDocumentsPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentPSND" parameterOrder="token fileName file hashFile descriptor hashDescriptor isLast">
+      <wsdl:input name="sendDocumentPSNDRequest" message="impl:sendDocumentPSNDRequest" />
+      <wsdl:output name="sendDocumentPSNDResponse" message="impl:sendDocumentPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsPSND" parameterOrder="token fileName file hashFile isLast">
+      <wsdl:input name="sendDocumentsPSNDRequest" message="impl:sendDocumentsPSNDRequest" />
+      <wsdl:output name="sendDocumentsPSNDResponse" message="impl:sendDocumentsPSNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesPREC" parameterOrder="token ids idUserExt">
+      <wsdl:input name="getDocumentsFilesPRECRequest" message="impl:getDocumentsFilesPRECRequest" />
+      <wsdl:output name="getDocumentsFilesPRECResponse" message="impl:getDocumentsFilesPRECResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListPREC" parameterOrder="token allDocuments dateFromhms dateTohms idCedente">
+      <wsdl:input name="getDocumentsListPRECRequest" message="impl:getDocumentsListPRECRequest" />
+      <wsdl:output name="getDocumentsListPRECResponse" message="impl:getDocumentsListPRECResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="fatelwV1SoapBinding" type="impl:fatelwV1">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="connect">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="connectRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="connectResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disconnect">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="disconnectRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="disconnectResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCedente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCedenteRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCedenteResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insCedente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insCedenteRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="insCedenteResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updCedente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updCedenteRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="updCedenteResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updCedenteProgInvio">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updCedenteProgInvioRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="updCedenteProgInvioResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insConsumi">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insConsumiRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="insConsumiResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAziMaster">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAziMasterRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getAziMasterResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumi">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getConsumiRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getConsumiResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumiCount">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getConsumiCountRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getConsumiCountResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsumiByMonth">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getConsumiByMonthRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getConsumiByMonthResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insFatture">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insFattureRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="insFattureResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insSubfornitura">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insSubfornituraRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="insSubfornituraResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updSubfornitura">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updSubfornituraRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="updSubfornituraResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoExport">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getEsitoExportRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getEsitoExportResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insReconsCODI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insReconsCODIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="insReconsCODIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResponsabileConservazione">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getResponsabileConservazioneRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getResponsabileConservazioneResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="billing_flactivechange_master">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="billing_flactivechange_masterRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="billing_flactivechange_masterResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="billing_pwdchange">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="billing_pwdchangeRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="billing_pwdchangeResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="billing_pwdchange_partner">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="billing_pwdchange_partnerRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="billing_pwdchange_partnerResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="billing_getfiles">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="billing_getfilesRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="billing_getfilesResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="coordinator_subfornitura">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="coordinator_subfornituraRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="coordinator_subfornituraResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtente">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getUtenteRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getUtenteResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHub">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHubRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getHubResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getState">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStateRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStateResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="delDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocuments">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFiles">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttach">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesAttachRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesAttachResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFiles">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListAGO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListAGORequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListAGOResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="valDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="valDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentService">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signDocumentServiceRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signDocumentServiceResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signAndConfirmDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signAndConfirmDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentService">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signAndConfirmDocumentServiceRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signAndConfirmDocumentServiceResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="confDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCompleted">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="setCompletedRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="setCompletedResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocument">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsAsync">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsAsyncRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsAsyncResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocuments">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoImport">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getEsitoImportRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getEsitoImportResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exportZipFA">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="exportZipFARequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="exportZipFAResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodiState">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCodiStateRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCodiStateResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStateFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStateFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttachFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesAttachFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesAttachFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFPCD">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListFPCDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListFPCDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListFPHMS">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListFPHMSRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListFPHMSResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genNotifyFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="genNotifyFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="genNotifyFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFatturaFile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getFatturaFileRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getFatturaFileResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exportZipFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="exportZipFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="exportZipFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateFP">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCodiStateFPRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCodiStateFPResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileNSO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileNSORequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileNSOResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesNSO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesNSORequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesNSOResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListNSO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListNSORequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListNSOResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileNSO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileNSORequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileNSOResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStateDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStateDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="delDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="valDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="valDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chkDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="chkDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="chkDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signAndConfirmDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signAndConfirmDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="confDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateDF">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCodiStateDFRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCodiStateDFResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStateLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStateLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="delDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="valDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="valDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chkDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="chkDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="chkDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signAndConfirmDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="signAndConfirmDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="signAndConfirmDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="confDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodiStateLI">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCodiStateLIRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCodiStateLIResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendCorrispettivi">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendCorrispettiviRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendCorrispettiviResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendCorrispettivo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendCorrispettivoRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendCorrispettivoResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettiviList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCorrispettiviListRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCorrispettiviListResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettivoFile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCorrispettivoFileRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCorrispettivoFileResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCorrispettiviFiles">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCorrispettiviFilesRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getCorrispettiviFilesResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStateOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStateOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confDocumentOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="confDocumentOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delDocumentOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="delDocumentOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFileOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFileOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFileOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationFileOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNotificationFileOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getNotificationFileOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentFilesAttachOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentFilesAttachOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentFilesAttachOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesOPC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesOPCRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesOPCResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delDocumentPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delDocumentPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="delDocumentPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valDocumentPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="valDocumentPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="valDocumentPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confDocumentPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confDocumentPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="confDocumentPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatePSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStatePSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getStatePSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDocumentsPSND">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendDocumentsPSNDRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="sendDocumentsPSNDResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsFilesPREC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsFilesPRECRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsFilesPRECResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentsListPREC">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDocumentsListPRECRequest">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentsListPRECResponse">
+        <wsdlsoap:body use="encoded" namespace="urn:ws.fatelw.zucchetti.it" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="fatelwV1Service">
+    <wsdl:port name="fatelwV1" binding="impl:fatelwV1SoapBinding">
+      <wsdlsoap:address location="https://fatturapa-test.zucchetti.it/test/services/fatelwV1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
