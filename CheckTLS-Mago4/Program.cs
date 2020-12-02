@@ -50,7 +50,10 @@ namespace Microarea.CheckTLS.Mago4
             var error = digitalHub_Wrapper.GetWSError();
 
             // se viene dato errore di credenziali significa che il WS è stato raggiunto con il protocollo TLS 1.2
-            if (error.StartsWith("Wrong username or password"))
+            if (
+                    error.StartsWith("Wrong username or password") ||
+                    error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'")
+               )
             {
                 Console.WriteLine("Connessione con Digital Hub riuscita\nIl sistema supporta correttamente il protocollo TLS 1.2.");
             }
@@ -65,7 +68,10 @@ namespace Microarea.CheckTLS.Mago4
 
                 digitalHub_Wrapper.Connect("test", "test", "test");
                 error = digitalHub_Wrapper.GetWSError();
-                if (error.StartsWith("Wrong username or password"))
+                if (
+                        error.StartsWith("Wrong username or password") ||
+                        error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'")
+                   )
                 {
                     Console.WriteLine("Connessione con Digital Hub possibile\nIl sistema supporta il protocollo TLS 1.2., ma è necessario aggiornare Mago oppure applicare opportune configurazioni al registry.");
                     printRegistryValues();
