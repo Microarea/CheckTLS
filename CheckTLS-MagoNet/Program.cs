@@ -52,7 +52,8 @@ namespace Microarea.CheckTLS.MagoNet
             // se viene dato errore di credenziali significa che il WS è stato raggiunto con il protocollo TLS 1.2
             if (
                     error.StartsWith("Wrong username or password") ||
-                    error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'")
+                    error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'") ||
+                    error.StartsWith("Richiesta HTTP vietata con lo schema di autenticazione client 'Anonymous'")
                )
             {
                 Console.WriteLine("Connessione con Digital Hub riuscita\nIl sistema supporta correttamente il protocollo TLS 1.2.");
@@ -66,11 +67,12 @@ namespace Microarea.CheckTLS.MagoNet
                 // si prova con la forzatura dell'uso del protocollo (ultime versioni di Mago)
                 digitalHub_Wrapper = new DigitalHub_Wrapper("https://fatturapa-test.zucchetti.it/test/services/fatelwV1", true);
 
-                digitalHub_Wrapper.Connect("test", "test", "001");
+                digitalHub_Wrapper.Connect("test", "test", "test");
                 error = digitalHub_Wrapper.GetWSError();
                 if (
                         error.StartsWith("Wrong username or password") ||
-                        error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'")
+                        error.StartsWith("The HTTP request was forbidden with client authentication scheme 'Anonymous'") ||
+                        error.StartsWith("Richiesta HTTP vietata con lo schema di autenticazione client 'Anonymous'")
                    )
                 {
                     Console.WriteLine("Connessione con Digital Hub possibile\nIl sistema supporta il protocollo TLS 1.2., ma è necessario aggiornare Mago oppure applicare opportune configurazioni al registry.");
