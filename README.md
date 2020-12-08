@@ -1,7 +1,7 @@
 # CheckTLS
 Queste utilities aiutanto a verificare se il sistema su cui è installato Mago4 o Mago.net (client o server) sia predisposto per l'utilizzo del protocollo di sicurezza TLS 1.2.
 
-Tale protocollo è quello utilizzato dal Digital Hub a partire dal 30 Novembre 2020, per cui non sarà possibile operare con la Fatturazione Elettronica se tale protocollo non viene supportato.
+Tale protocollo è quello utilizzato dal Digital Hub a partire dal 1 Gennaio 2021, per cui non sarà possibile operare con la Fatturazione Elettronica se tale protocollo non viene supportato.
 
 Le utilities sono qui presenti in formato sorgente, sotto forma di solution per Visual Studio 2019. È possibile scaricare le utilities in formato eseguibile dall'apposita pagina dell'Help Center.
 
