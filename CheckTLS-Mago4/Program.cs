@@ -33,6 +33,9 @@ namespace Microarea.CheckTLS.Mago4
 
         static void Main(string[] args)
         {
+            //string DHURL = "https://fatturapa-test.zucchetti.it/test/services/fatelwV1"
+            string DHURL = "https://digitalhubtest.zucchetti.it/fatelw/services/fatelwV1";
+
             Console.WriteLine("=====================");
             Console.WriteLine("CheckTLS - Mago4");
             Console.WriteLine("=====================");
@@ -41,7 +44,7 @@ namespace Microarea.CheckTLS.Mago4
             Console.Write("\nverifica in corso ...\r");
             
             // inizialmente si prova senza forzare l'uso del protocollo (precedenti versioni di Mago)
-            DigitalHub_Wrapper digitalHub_Wrapper = new DigitalHub_Wrapper("https://fatturapa-test.zucchetti.it/test/services/fatelwV1", false);
+            DigitalHub_Wrapper digitalHub_Wrapper = new DigitalHub_Wrapper(DHURL, false);
 
             // la connessione non andrà mai a buon fine, le credenziali sono fittizie
             digitalHub_Wrapper.Connect("test", "test", "test");
@@ -65,7 +68,7 @@ namespace Microarea.CheckTLS.Mago4
                     )
             {
                 // si prova con la forzatura dell'uso del protocollo (ultime versioni di Mago)
-                digitalHub_Wrapper = new DigitalHub_Wrapper("https://fatturapa-test.zucchetti.it/test/services/fatelwV1", true);
+                digitalHub_Wrapper = new DigitalHub_Wrapper(DHURL, true);
 
                 digitalHub_Wrapper.Connect("test", "test", "test");
                 error = digitalHub_Wrapper.GetWSError();
